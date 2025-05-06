@@ -89,3 +89,7 @@ scissors
 teddy bear
 hair drier
 toothbrush
+flower
+comb
+
+
