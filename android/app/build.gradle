@@ -1,0 +1,71 @@
+plugins {
+    id 'com.google.gms.google-services'
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.android.application")
+    id("kotlin-android")
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id("dev.flutter.flutter-gradle-plugin")
+}
+
+android {
+
+    aaptOptions {
+        noCompress 'tflite'
+        noCompress 'lite'
+    }
+    namespace = "com.example.ocr"
+    compileSdk = 35
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+    defaultConfig {
+        applicationId = "com.example.ocr"
+        minSdk = 23
+        targetSdk = 33 // ← ici mettre 35 au lieu de 33
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:33.13.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.activity:activity:1.8.2' // ← AJOUTE CECI
+    implementation 'androidx.appcompat:appcompat:1.6.1' // ← AJOUTE CECI AUSSI
+
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation 'androidx.camera:camera-core:1.1.0'
+    implementation 'androidx.camera:camera-camera2:1.1.0'
+    implementation 'androidx.camera:camera-lifecycle:1.1.0'
+    implementation 'com.google.mlkit:text-recognition-chinese:16.0.0'
+    implementation 'com.google.mlkit:text-recognition-devanagari:16.0.0'
+    implementation 'com.google.mlkit:text-recognition-japanese:16.0.0'
+    implementation 'com.google.mlkit:text-recognition-korean:16.0.0'
+}
+
+
+flutter {
+    source = "../.."
+}
+
+secrets {
+    defaultPropertiesFileName = "secrets.properties"
+}
