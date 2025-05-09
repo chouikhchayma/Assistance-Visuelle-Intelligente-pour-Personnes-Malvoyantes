@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
+import 'package:ocr/pages/home_page.dart';
 import 'admin_login.dart';
 import 'admin_dashboard.dart';
 import 'voice_menu.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/user-form': (context) => UserForm(),
         '/qr-login': (context) => QrLoginPage(qrData: ''),
         '/qr-scanner': (context) => QrScannerPage(),
+        '/home': (context) => HomePage(),
 
       },
     );
